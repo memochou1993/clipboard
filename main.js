@@ -1,15 +1,16 @@
-const copy = (value, options = { container: document.body }) => {
-  const ele = document.createElement('textarea');
-  ele.value = value;
-  options.container.appendChild(ele);
-  ele.select();
-  ele.setSelectionRange(0, ele.value.length);
-  const text = ele.value;
-  document.execCommand('copy');
-  ele.remove();
-  return text;
+const copy = (value) => {
+  // const ele = document.createElement('textarea');
+  // ele.value = value;
+  // document.body.appendChild(ele);
+  // ele.select();
+  // ele.setSelectionRange(0, ele.value.length);
+  // document.execCommand('copy');
+  // ele.remove();
+
+  // Clipboard API
+  navigator.clipboard.writeText(value);
 };
 
 document.getElementById('copy').addEventListener('click', () => {
-  copy('Hello, World!');
+  copy('Hello, World');
 });
